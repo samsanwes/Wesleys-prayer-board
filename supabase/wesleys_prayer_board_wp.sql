@@ -13,7 +13,7 @@ create table if not exists public.prayers_wp (
   id            uuid primary key default gen_random_uuid(),
   name          text not null,
   text          text not null,
-  category      text not null default 'Personal',
+  category      text not null default 'Family',
   added_by      text,
   answered      boolean not null default false,
   answered_date timestamptz,

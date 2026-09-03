@@ -49,13 +49,13 @@ h3{font-size:19px;font-weight:normal;color:var(--soft);margin:18px 0 10px;}
 <div class="box">
 <h2 style="margin-top:0;">Add a prayer request</h2>
 <label for="ppoint">Prayer point (who or what this is for)</label>
-<input type="text" id="ppoint" placeholder="e.g. Roshan's Health">
+<input type="text" id="ppoint" placeholder="e.g. Dillu's health">
 <label for="ptext">Prayer request</label>
 <textarea id="ptext" placeholder="What shall we pray for?"></textarea>
 <label for="pcat">This is for</label>
-<select id="pcat"><option>Personal</option><option>Family</option><option>Friends</option><option>Nation</option><option>World</option><option>Thanksgiving</option></select>
+<select id="pcat"><option>Family</option><option>Friends</option><option>Nation</option><option>World</option><option>Thanksgiving</option></select>
 <label for="pby">Your name</label>
-<input type="text" id="pby" placeholder="e.g. Roshan">
+<input type="text" id="pby" placeholder="e.g. Dillu">
 <button class="btn" onclick="addPrayer()">Add to the board</button>
 <div class="status" id="status"></div>
 </div>
@@ -88,7 +88,7 @@ var SB_URL='https://irujnmfbefjpztovqwjx.supabase.co';
 var SB_KEY='sb_publishable_31eIEGWomuVnjU2qnjTdDw_DDlS8K-M';
 var TABLE='/rest/v1/prayers_wp';
 var HEADERS={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};
-var CATS=['Personal','Family','Friends','Nation','World','Thanksgiving'];
+var CATS=['Family','Friends','Nation','World','Thanksgiving'];
 var prayers=[];var editingId=null;
 async function api(method,query,body){
 var opts={method:method,headers:HEADERS};
@@ -224,7 +224,7 @@ function buildList(){
 var active=prayers.filter(function(p){return !p.answered;});
 var thanks=prayers.filter(function(p){return p.answered;}).concat(active.filter(function(p){return p.category==='Thanksgiving';}));
 var seen={};thanks=thanks.filter(function(p){if(seen[p.id]){return false;}seen[p.id]=true;return true;});
-return {active:active.filter(function(p){return p.category!=='Thanksgiving';}),thanks:thanks,order:['Personal','Family','Friends','Nation','World']};
+return {active:active.filter(function(p){return p.category!=='Thanksgiving';}),thanks:thanks,order:['Family','Friends','Nation','World']};
 }
 function entryHtml(p,answered){
 var by=p.added_by?'<div class="mby">Added by '+esc(p.added_by)+'</div>':'<div class="mby"></div>';
