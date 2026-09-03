@@ -2,7 +2,7 @@ var SB_URL='https://irujnmfbefjpztovqwjx.supabase.co';
 var SB_KEY='sb_publishable_31eIEGWomuVnjU2qnjTdDw_DDlS8K-M';
 var TABLE='/rest/v1/prayers_wp';
 var HEADERS={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};
-var CATS=['Mummy','Pramod & Family','Santosh & Family','Dillu & Family'];
+var CATS=['Mummy','Pramod & Family','Santosh & Family','Dillu & Family','Family, Friends & World'];
 var prayers=[];var editingId=null;
 async function api(method,query,body){
 var opts={method:method,headers:HEADERS};
