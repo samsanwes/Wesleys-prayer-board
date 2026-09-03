@@ -1,6 +1,6 @@
-# Wesley's Prayer Board
+# Wesley Family Prayer Board
 
-A small family prayer board for Wesley's prayer time. Cloned from
+A small family prayer board for Wesley family prayer time. Cloned from
 [Boys-prayer-board](https://github.com/samsanwes/Boys-prayer-board), which was
 itself cloned from
 [big-family-prayer-board](https://github.com/samsanwes/big-family-prayer-board).

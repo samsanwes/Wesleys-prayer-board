@@ -120,7 +120,7 @@ catch(e){setStatus('manageStatus','Could not remove. Try again.');}
 function exportBoard(){
 var active=prayers.filter(function(p){return !p.answered;});
 var done=prayers.filter(function(p){return p.answered;});
-var out='WESLEY\'S PRAYER BOARD - backup made '+new Date().toLocaleDateString()+'\n\n=== PRAYING FOR ('+active.length+') ===\n\n';
+var out='WESLEY FAMILY PRAYER BOARD - backup made '+new Date().toLocaleDateString()+'\n\n=== PRAYING FOR ('+active.length+') ===\n\n';
 active.forEach(function(p){out+='* '+p.name+'\n  '+p.text+'\n  ('+(p.added_by?p.added_by+', ':'')+fmtDate(p.created_at)+', '+p.category+')\n\n';});
 if(!active.length){out+='(none)\n\n';}
 out+='=== THANKSGIVING / ANSWERED ('+done.length+') ===\n\n';
@@ -166,7 +166,7 @@ function hideList(){document.getElementById('listView').style.display='none';if(
 function copyList(){
 var b=buildList();
 var dateStr=new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-var out='🙏 *Wesley\'s Prayer Board - This Week\'s Prayer List*\n'+dateStr+'\n\n';
+var out='🙏 *Wesley Family Prayer Board - This Week\'s Prayer List*\n'+dateStr+'\n\n';
 if(b.thanks.length){out+='*Thanksgiving*\n';
 b.thanks.forEach(function(p){out+='🙏 *'+p.name+'*\n'+p.text+'\n\n';});}
 b.order.forEach(function(cat){
