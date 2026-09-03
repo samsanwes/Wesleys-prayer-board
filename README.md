@@ -5,9 +5,9 @@ A small family prayer board for Wesley's prayer time. Cloned from
 itself cloned from
 [big-family-prayer-board](https://github.com/samsanwes/big-family-prayer-board).
 
-- `index.html` — the whole site: add a request, manage the board (reorder,
-  edit, mark answered, remove, backup) and open / copy the prayer list.
-  There is no passcode and no admin page.
+- `index.html` — add a request, open / copy this week's prayer list.
+- `manage.html` — reorder, edit, mark answered, remove, back up (no passcode).
+- `board.js` — shared code for both pages.
 - `supabase/wesleys_prayer_board_wp.sql` — run once in the Supabase SQL
   editor. Creates the `prayers_wp` table with open read/write rules.
 
