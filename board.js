@@ -2,7 +2,7 @@ var SB_URL='https://irujnmfbefjpztovqwjx.supabase.co';
 var SB_KEY='sb_publishable_31eIEGWomuVnjU2qnjTdDw_DDlS8K-M';
 var TABLE='/rest/v1/prayers_wp';
 var HEADERS={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};
-var CATS=['Family','Friends','Nation','World','Thanksgiving'];
+var CATS=['Mummy','Pramod & Family','Santosh & Family','Dillu & Family'];
 var prayers=[];var editingId=null;
 async function api(method,query,body){
 var opts={method:method,headers:HEADERS};
@@ -34,12 +34,10 @@ async function addPrayer(){
 var point=document.getElementById('ppoint').value.trim();
 var text=document.getElementById('ptext').value.trim();
 var cat=document.getElementById('pcat').value;
-var by=document.getElementById('pby').value.trim();
 if(!point){setStatus('status','Please write the prayer point first.');return;}
 if(!text){setStatus('status','Please write the prayer request.');return;}
-if(!by){setStatus('status','Please add your name.');return;}
 try{
-await api('POST','',{name:point,text:text,category:cat,added_by:by});
+await api('POST','',{name:point,text:text,category:cat});
 document.getElementById('ppoint').value='';
 document.getElementById('ptext').value='';
 setStatus('status','Added to the board. It will appear in this week\'s prayer list.');
@@ -137,12 +135,11 @@ navigator.clipboard.writeText(out).then(function(){setStatus('exportStatus','Cop
 /* ---- the reading list ---- */
 function buildList(){
 var active=prayers.filter(function(p){return !p.answered;});
-var thanks=prayers.filter(function(p){return p.answered;}).concat(active.filter(function(p){return p.category==='Thanksgiving';}));
-var seen={};thanks=thanks.filter(function(p){if(seen[p.id]){return false;}seen[p.id]=true;return true;});
-return {active:active.filter(function(p){return p.category!=='Thanksgiving';}),thanks:thanks,order:['Family','Friends','Nation','World']};
+var thanks=prayers.filter(function(p){return p.answered;});
+return {active:active,thanks:thanks,order:CATS};
 }
 function entryHtml(p,answered){
-var by=p.added_by?'<div class="mby">Added by '+esc(p.added_by)+'</div>':'<div class="mby"></div>';
+var by='<div class="mby"></div>';
 var mark=answered?'&#128591; ':'';
 var ans=answered&&p.answered_date?' <span style="color:var(--green);font-size:16px;font-weight:normal;">(answered '+fmtDate(p.answered_date)+')</span>':'';
 return '<div class="mpoint">'+mark+esc(p.name)+ans+'</div><div class="mdetail">'+linkify(esc(p.text))+'</div>'+by;
